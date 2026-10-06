@@ -390,11 +390,20 @@ main { overflow-x: clip; }
 
 .quem-somos { padding-top: 60px; }
 
+/* Texto alinhado com o container das outras seções; foto vai até perto da borda direita */
 .quem-somos-grid {
   display: grid;
-  grid-template-columns: 410px minmax(0, 1fr);
+  grid-template-columns: 350px minmax(0, 1fr);
   align-items: center;
-  gap: 48px;
+  gap: 56px;
+  padding-left: max(16px, calc((100% - 1080px) / 2));
+  padding-right: 24px;
+}
+
+.quem-somos .section-title {
+  font-size: 56px;
+  line-height: 60px;
+  letter-spacing: -1.8px;
 }
 
 .quem-somos-text {
@@ -638,11 +647,15 @@ main { overflow-x: clip; }
 @media (max-width: 1100px) {
   .carousel-arrow.next { left: auto; right: 16px; }
   .faq-grid { grid-template-columns: 1fr; gap: 40px; }
-  .quem-somos-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .quem-somos-info { max-width: 560px; }
   .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 48px 40px; }
   .footer-marca { grid-column: 1 / -1; }
   .footer-cta { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 900px) {
+  .quem-somos-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-right: 16px; }
+  .quem-somos-info { max-width: 560px; }
+  .quem-somos .section-title { font-size: 44px; line-height: 48px; }
 }
 
 @media (max-width: 760px) {
