@@ -284,6 +284,7 @@ main { overflow-x: clip; }
 .quem-somos-text p,
 .faq-sub {
   text-align: justify;
+  text-wrap: pretty;
 }
 
 /* ---------- Carrossel de serviços ---------- */
@@ -389,26 +390,26 @@ main { overflow-x: clip; }
 
 .quem-somos { padding-top: 60px; }
 
-.quem-somos-head {
+.quem-somos-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: end;
-  gap: 40px;
+  grid-template-columns: 410px minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
 }
 
 .quem-somos-text {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+  margin-top: 24px;
   font-family: "DM Sans", sans-serif;
   font-size: 16px;
-  line-height: 20.8px;
+  line-height: 24px;
   color: var(--muted);
 }
 
 .quem-somos-foto {
   position: relative;
-  margin-top: 40px;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -637,6 +638,8 @@ main { overflow-x: clip; }
 @media (max-width: 1100px) {
   .carousel-arrow.next { left: auto; right: 16px; }
   .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+  .quem-somos-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .quem-somos-info { max-width: 560px; }
   .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 48px 40px; }
   .footer-marca { grid-column: 1 / -1; }
   .footer-cta { flex-direction: column; align-items: flex-start; }
@@ -656,8 +659,6 @@ main { overflow-x: clip; }
   .card { flex-basis: 280px; }
   .carousel-arrow { display: none; }
   .ferramentas-grid { grid-template-columns: minmax(0, 1fr); }
-  .quem-somos-head { grid-template-columns: minmax(0, 1fr); gap: 16px; }
-  .quem-somos-foto { margin-top: 28px; }
   .ferramentas-grid br { display: none; }
   .tools { gap: 32px 24px; }
   .tools img { max-width: 100%; max-height: 56px; }
