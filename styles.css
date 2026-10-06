@@ -377,6 +377,46 @@ main { overflow-x: clip; }
 }
 .tools img { max-height: 76px; width: auto; max-width: 184px; object-fit: contain; }
 
+/* ---------- Quem somos ---------- */
+
+.quem-somos { padding-top: 60px; }
+
+.quem-somos-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: 40px;
+}
+
+.quem-somos-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  line-height: 20.8px;
+  color: var(--muted);
+}
+
+.quem-somos-foto {
+  position: relative;
+  margin-top: 40px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.quem-somos-foto img {
+  width: 100%;
+  aspect-ratio: 2400 / 1010;
+  object-fit: cover;
+}
+.quem-somos-foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8, 8, 15, 0.45), transparent 40%);
+  pointer-events: none;
+}
+
 /* ---------- FAQ ---------- */
 
 .faq-grid {
@@ -540,6 +580,8 @@ main { overflow-x: clip; }
   .card { flex-basis: 280px; }
   .carousel-arrow { display: none; }
   .ferramentas-grid { grid-template-columns: minmax(0, 1fr); }
+  .quem-somos-head { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .quem-somos-foto { margin-top: 28px; }
   .ferramentas-grid br { display: none; }
   .tools { gap: 32px 24px; }
   .tools img { max-width: 100%; max-height: 56px; }
