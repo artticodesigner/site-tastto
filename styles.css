@@ -281,7 +281,6 @@ main { overflow-x: clip; }
 /* Descrições abaixo dos títulos */
 .hero-sub,
 .section-sub,
-.quem-somos-text p,
 .faq-sub {
   text-align: justify;
   text-wrap: pretty;
@@ -385,52 +384,6 @@ main { overflow-x: clip; }
   align-items: center;
 }
 .tools img { max-height: 76px; width: auto; max-width: 184px; object-fit: contain; }
-
-/* ---------- Quem somos ---------- */
-
-.quem-somos { padding-top: 60px; }
-
-.quem-somos-grid {
-  display: grid;
-  grid-template-columns: 310px minmax(0, 1fr);
-  align-items: center;
-  gap: 56px;
-}
-
-.quem-somos .section-title {
-  white-space: nowrap;
-  font-size: 56px;
-  line-height: 60px;
-  letter-spacing: -1.8px;
-}
-
-.quem-somos-text {
-  display: flex;
-  flex-direction: column;
-  margin-top: 24px;
-  font-family: "DM Sans", sans-serif;
-  font-size: 14px;
-  line-height: 21px;
-  color: var(--muted);
-}
-
-.quem-somos-foto {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-}
-.quem-somos-foto img {
-  width: 100%;
-  aspect-ratio: 2400 / 1010;
-  object-fit: cover;
-}
-.quem-somos-foto::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(8, 8, 15, 0.45), transparent 40%);
-  pointer-events: none;
-}
 
 /* ---------- FAQ ---------- */
 
@@ -647,13 +600,6 @@ main { overflow-x: clip; }
   .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 48px 40px; }
   .footer-marca { grid-column: 1 / -1; }
   .footer-cta { flex-direction: column; align-items: flex-start; }
-}
-
-@media (max-width: 1100px) {
-  .quem-somos-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .quem-somos-info { max-width: 560px; }
-  .quem-somos-text { font-size: 16px; line-height: 24px; }
-  .quem-somos .section-title { font-size: 44px; line-height: 48px; }
 }
 
 @media (max-width: 760px) {
