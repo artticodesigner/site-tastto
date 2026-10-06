@@ -278,6 +278,15 @@ main { overflow-x: clip; }
   color: var(--muted);
 }
 
+/* Descrições abaixo dos títulos */
+.hero-sub,
+.section-sub,
+.quem-somos-text p,
+.faq-sub {
+  text-align: justify;
+  hyphens: auto;
+}
+
 /* ---------- Carrossel de serviços ---------- */
 
 .carousel {
