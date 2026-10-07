@@ -368,22 +368,30 @@ main { overflow-x: clip; }
 
 /* ---------- Quem somos ---------- */
 
-.quem-somos { padding: 105px 0 83px; }
+.quem-somos { padding: 70px 0 60px; }
 
-.quem-somos-grid {
+.quem-somos-box {
+  position: relative;
   display: grid;
-  grid-template-columns: 528px 449px;
-  align-items: start;
-  gap: 88px;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+  padding: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 40px;
+  background:
+    radial-gradient(60% 90% at 100% 0%, rgba(144, 144, 224, 0.14), transparent 70%),
+    rgba(144, 144, 224, 0.05);
+  overflow: hidden;
 }
 
 .quem-somos-foto {
-  border-radius: 17px;
+  border-radius: 20px;
   overflow: hidden;
 }
 .quem-somos-foto img {
   width: 100%;
-  height: 238px;
+  aspect-ratio: 1600 / 688;
   object-fit: cover;
 }
 
@@ -393,7 +401,7 @@ main { overflow-x: clip; }
   display: flex;
   flex-direction: column;
   gap: 20.8px;
-  margin-top: 12px;
+  margin-top: 16px;
   font-family: "DM Sans", sans-serif;
   font-size: 16px;
   line-height: 20.8px;
@@ -638,9 +646,8 @@ main { overflow-x: clip; }
 }
 
 @media (max-width: 1100px) {
-  .quem-somos-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .quem-somos-box { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .quem-somos-info { max-width: 560px; }
-  .quem-somos-foto img { height: auto; aspect-ratio: 528 / 238; }
 }
 
 @media (max-width: 760px) {
@@ -653,7 +660,8 @@ main { overflow-x: clip; }
   .hero-sub { font-size: 17px; line-height: 25px; margin-top: 28px; }
   .logos-track img { width: 110px; height: 110px; }
   .section { padding: 80px 0; }
-  .quem-somos { padding: 60px 0; }
+  .quem-somos { padding: 40px 0; }
+  .quem-somos-box { padding: 20px 20px 28px; border-radius: 28px; }
   .section-title { font-size: 32px; line-height: 36px; }
   .card { flex-basis: 280px; }
   .carousel-arrow { display: none; }
