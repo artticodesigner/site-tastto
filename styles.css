@@ -281,6 +281,7 @@ main { overflow-x: clip; }
 /* Descrições abaixo dos títulos */
 .hero-sub,
 .section-sub,
+.quem-somos-text p,
 .faq-sub {
   text-align: justify;
   text-wrap: pretty;
@@ -364,6 +365,40 @@ main { overflow-x: clip; }
 .carousel-arrow.prev { left: 32px; }
 .carousel-arrow.next { left: 996px; }
 .carousel-arrow:disabled { opacity: 0.3; pointer-events: none; }
+
+/* ---------- Quem somos ---------- */
+
+.quem-somos { padding: 105px 0 83px; }
+
+.quem-somos-grid {
+  display: grid;
+  grid-template-columns: 528px 449px;
+  align-items: start;
+  gap: 88px;
+}
+
+.quem-somos-foto {
+  border-radius: 17px;
+  overflow: hidden;
+}
+.quem-somos-foto img {
+  width: 100%;
+  height: 238px;
+  object-fit: cover;
+}
+
+.quem-somos .section-title span { font-weight: 500; }
+
+.quem-somos-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20.8px;
+  margin-top: 12px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  line-height: 20.8px;
+  color: var(--muted);
+}
 
 /* ---------- Ferramentas ---------- */
 
@@ -602,6 +637,12 @@ main { overflow-x: clip; }
   .footer-cta { flex-direction: column; align-items: flex-start; }
 }
 
+@media (max-width: 1100px) {
+  .quem-somos-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .quem-somos-info { max-width: 560px; }
+  .quem-somos-foto img { height: auto; aspect-ratio: 528 / 238; }
+}
+
 @media (max-width: 760px) {
   .nav { padding: 0 20px; height: 70px; }
   .nav-menu { right: 20px; }
@@ -612,6 +653,7 @@ main { overflow-x: clip; }
   .hero-sub { font-size: 17px; line-height: 25px; margin-top: 28px; }
   .logos-track img { width: 110px; height: 110px; }
   .section { padding: 80px 0; }
+  .quem-somos { padding: 60px 0; }
   .section-title { font-size: 32px; line-height: 36px; }
   .card { flex-basis: 280px; }
   .carousel-arrow { display: none; }
