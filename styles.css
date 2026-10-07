@@ -376,7 +376,7 @@ main { overflow-x: clip; }
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   align-items: center;
   gap: 48px;
-  padding: 48px;
+  padding: 80px 48px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 40px;
   background:
@@ -646,7 +646,7 @@ main { overflow-x: clip; }
 }
 
 @media (max-width: 1100px) {
-  .quem-somos-box { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .quem-somos-box { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 56px 40px; }
   .quem-somos-info { max-width: 560px; }
 }
 
