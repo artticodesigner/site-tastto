@@ -84,7 +84,7 @@ em { font-style: normal; }
 .btn-menu {
   width: 46px;
   height: 46px;
-  display: grid;
+  display: none;
   place-items: center;
   background: #3f3f46;
   color: var(--white);
@@ -93,27 +93,44 @@ em { font-style: normal; }
   cursor: pointer;
 }
 
+/* Links visíveis direto na barra (sem sanduíche) */
 .nav-menu {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 43px;
-  display: none;
-  flex-direction: column;
-  min-width: 220px;
-  padding: 8px;
-  background: rgba(8, 8, 15, 0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
-.nav-menu.open { display: flex; }
 .nav-menu a {
-  padding: 12px 14px;
+  padding: 10px 14px;
   border-radius: 5px;
   font-size: 15px;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s, background 0.2s;
 }
-.nav-menu a:hover { background: rgba(255, 255, 255, 0.06); }
+.nav-menu a:hover { color: var(--white); background: rgba(255, 255, 255, 0.06); }
+
+/* Telas estreitas: não cabem os links, volta pro botão ☰ */
+@media (max-width: 1000px) {
+  .btn-menu { display: grid; }
+  .nav-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 43px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    min-width: 220px;
+    padding: 8px;
+    background: rgba(8, 8, 15, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+  }
+  .nav-menu.open { display: flex; }
+  .nav-menu a { padding: 12px 14px; }
+}
 
 /* ---------- Hero ---------- */
 
