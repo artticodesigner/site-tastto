@@ -136,7 +136,6 @@ em { font-style: normal; }
 
 .hero {
   position: relative;
-  min-height: 900px;
   overflow: hidden;
 }
 
@@ -153,7 +152,7 @@ em { font-style: normal; }
   position: relative;
   max-width: 1112px;
   margin: 0 auto;
-  padding: 183px 16px 120px;
+  padding: 183px 16px 24px;
 }
 
 .hero-title {
@@ -258,7 +257,20 @@ em { font-style: normal; }
 
 main { overflow-x: clip; }
 
-.section { padding: 120px 0; }
+.section { position: relative; padding: 120px 0; }
+.servicos { padding-top: 72px; }
+
+/* Divisor entre seções: linha fina que some nas pontas */
+.section ~ .section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(1080px, calc(100% - 32px));
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(144, 144, 224, 0.6), transparent);
+}
 
 .eyebrow {
   display: flex;
@@ -334,8 +346,17 @@ main { overflow-x: clip; }
   border-radius: 16px;
   overflow: hidden;
   background: var(--bg) var(--img) center / cover no-repeat;
+  border: 1px solid transparent;
   user-select: none;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(144, 144, 224, 0.5);
+  box-shadow: 0 18px 40px -12px rgba(144, 144, 224, 0.45);
+}
+.card .card-icon { transition: background 0.35s, color 0.35s, border-color 0.35s; }
+.card:hover .card-icon { background: var(--purple); border-color: var(--purple); color: var(--bg); }
 .card::before {
   content: "";
   position: absolute;
@@ -555,45 +576,67 @@ main { overflow-x: clip; }
 .faq-card {
   position: sticky;
   top: 130px;
-  min-height: 566px;
-  padding: 27px;
+  overflow: hidden;
+  min-height: 520px;
+  padding: 44px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(144, 144, 224, 0.22);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(144, 144, 224, 0.28), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(250, 106, 43, 0.12), transparent 50%),
+    #0f0f1a;
+}
+/* "?" gigante e discreto no fundo */
+.faq-card::after {
+  content: "?";
+  position: absolute;
+  right: -20px;
+  bottom: -90px;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 600;
+  font-size: 380px;
+  line-height: 1;
+  color: rgba(144, 144, 224, 0.06);
+  pointer-events: none;
+}
+.faq-card > * { position: relative; z-index: 1; }
+
+.faq-card-icon {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
   border-radius: 16px;
-  background: url(assets/faq-bg.png) center / cover no-repeat;
+  color: var(--purple);
+  background: rgba(144, 144, 224, 0.12);
+  border: 1px solid rgba(144, 144, 224, 0.3);
 }
 
 .faq-title {
   display: flex;
   flex-direction: column;
+  margin-top: 14px;
   font-weight: 600;
-  font-size: 57px;
-  line-height: 62.7px;
-  letter-spacing: -3.42px;
+  font-size: 52px;
+  line-height: 56px;
+  letter-spacing: -2.6px;
 }
 
 .faq-sub {
-  max-width: 330px;
+  max-width: 340px;
   margin-top: 20px;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 28px;
-  letter-spacing: -0.8px;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.5px;
+  color: #cfcfdc;
 }
 
-.faq-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 40px;
-  font-weight: 600;
-  font-size: 19px;
-  letter-spacing: -0.76px;
-  color: var(--orange);
-}
-.faq-link svg { transition: transform 0.3s; }
-.faq-link:hover svg { transform: translateX(4px); }
+.faq-btn { align-self: flex-start; }
 
 .faq-list { display: flex; flex-direction: column; gap: 12px; }
 
@@ -800,7 +843,7 @@ main { overflow-x: clip; }
   .nav-menu { right: 20px; }
   .btn-saiba { display: none; }
   .hero { min-height: 0; }
-  .hero-content { padding: 140px 16px 80px; }
+  .hero-content { padding: 140px 16px 16px; }
   .hero-title { font-size: 40px; line-height: 46px; }
   .hero-sub { font-size: 17px; line-height: 25px; margin-top: 28px; }
   .logos-track img { width: 110px; height: 110px; }
@@ -814,7 +857,7 @@ main { overflow-x: clip; }
   .ferramentas-grid br { display: none; }
   .tools { gap: 32px 24px; }
   .tools img { max-width: 100%; max-height: 56px; }
-  .faq-card { min-height: 420px; }
+  .faq-card { min-height: 0; padding: 32px 24px; }
   .faq-title { font-size: 44px; line-height: 48px; letter-spacing: -2px; }
   .depoimentos-grid {
     display: flex;
