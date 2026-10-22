@@ -14,6 +14,27 @@ menu.querySelectorAll('a').forEach((a) =>
   })
 );
 
+// Equipe: setas rolam o trilho um card por vez
+const equipeTrilho = document.querySelector('.equipe-trilho');
+const equipeSetas = document.querySelectorAll('.equipe-seta');
+
+function atualizarSetasEquipe() {
+  const fim = equipeTrilho.scrollWidth - equipeTrilho.clientWidth - 2;
+  equipeSetas[0].disabled = equipeTrilho.scrollLeft <= 2;
+  equipeSetas[1].disabled = equipeTrilho.scrollLeft >= fim;
+}
+
+equipeSetas.forEach((seta) =>
+  seta.addEventListener('click', () => {
+    const card = equipeTrilho.querySelector('.equipe-card');
+    const passo = card.offsetWidth + parseFloat(getComputedStyle(equipeTrilho).gap);
+    equipeTrilho.scrollBy({ left: passo * Number(seta.dataset.dir) });
+  })
+);
+equipeTrilho.addEventListener('scroll', atualizarSetasEquipe, { passive: true });
+window.addEventListener('resize', atualizarSetasEquipe);
+atualizarSetasEquipe();
+
 // Depoimentos: abre o vídeo do Instagram num pop-up
 const videoModal = document.querySelector('.video-modal');
 const videoFrame = videoModal.querySelector('iframe');
