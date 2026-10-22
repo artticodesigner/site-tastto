@@ -14,6 +14,30 @@ menu.querySelectorAll('a').forEach((a) =>
   })
 );
 
+// FAQ: abre/fecha com animação, uma pergunta aberta por vez
+const faqItems = document.querySelectorAll('.faq-item');
+const faqDuration = 300;
+
+function toggleFaq(item, open) {
+  const answer = item.querySelector('.faq-answer');
+  if (open) item.open = true;
+  const full = answer.scrollHeight;
+  const anim = answer.animate(
+    { height: open ? ['0px', `${full}px`] : [`${full}px`, '0px'] },
+    { duration: faqDuration, easing: 'ease' }
+  );
+  anim.onfinish = () => { if (!open) item.open = false; };
+}
+
+faqItems.forEach((item) =>
+  item.querySelector('summary').addEventListener('click', (e) => {
+    e.preventDefault();
+    const opening = !item.open;
+    if (opening) faqItems.forEach((other) => other !== item && other.open && toggleFaq(other, false));
+    toggleFaq(item, opening);
+  })
+);
+
 // Carrossel de serviços
 const track = document.querySelector('.carousel-track');
 const cards = track.querySelectorAll('.card');
