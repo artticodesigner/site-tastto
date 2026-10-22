@@ -14,6 +14,27 @@ menu.querySelectorAll('a').forEach((a) =>
   })
 );
 
+// Depoimentos: abre o vídeo do Instagram num pop-up
+const videoModal = document.querySelector('.video-modal');
+const videoFrame = videoModal.querySelector('iframe');
+
+function closeVideo() {
+  videoModal.hidden = true;
+  videoFrame.src = '';
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.depoimento').forEach((btn) =>
+  btn.addEventListener('click', () => {
+    videoFrame.src = `https://www.instagram.com/p/${btn.dataset.post}/embed/`;
+    videoModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  })
+);
+videoModal.querySelector('.video-modal-close').addEventListener('click', closeVideo);
+videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideo(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !videoModal.hidden) closeVideo(); });
+
 // FAQ: abre/fecha com animação, uma pergunta aberta por vez
 const faqItems = document.querySelectorAll('.faq-item');
 const faqDuration = 300;
