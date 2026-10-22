@@ -561,6 +561,127 @@ main { overflow-x: clip; }
   cursor: pointer;
 }
 
+/* ---------- Contato (formulário) ---------- */
+
+.contato .section-sub { max-width: 560px; }
+
+.contato-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 64px;
+  align-items: stretch;
+}
+
+.contato-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 40px;
+  margin-top: 48px;
+}
+.campo-full { grid-column: 1 / -1; }
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: "DM Sans", sans-serif;
+}
+.campo > span,
+.campo legend {
+  padding: 0;
+  font-weight: 500;
+  font-size: 15px;
+}
+.req { color: var(--orange); }
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 10px 0 14px;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0;
+  background: transparent;
+  color: var(--white);
+  font: inherit;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.25s;
+}
+.campo textarea { resize: vertical; min-height: 110px; }
+.campo input::placeholder,
+.campo textarea::placeholder { color: var(--gray); }
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus { border-bottom-color: var(--purple); }
+.campo .invalido { border-bottom-color: var(--orange); }
+
+.campo select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 28px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239090e0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") right 4px center / 14px no-repeat;
+}
+.campo select:invalid { color: var(--gray); }
+.campo select option { background: #0f0f1a; color: var(--white); }
+
+.opcoes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.opcao { cursor: pointer; }
+.opcao input { position: absolute; opacity: 0; pointer-events: none; }
+.opcao span {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50px;
+  font-size: 15px;
+  color: #cfcfdc;
+  transition: border-color 0.25s, background 0.25s, color 0.25s;
+}
+.opcao:hover span { border-color: rgba(144, 144, 224, 0.5); }
+.opcao input:checked + span {
+  border-color: var(--purple);
+  background: rgba(144, 144, 224, 0.15);
+  color: var(--white);
+}
+.opcao input:focus-visible + span { outline: 2px solid var(--purple); outline-offset: 2px; }
+.opcoes.invalido .opcao span { border-color: rgba(250, 106, 43, 0.6); }
+
+.contato-enviar { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+.contato-enviar .btn-purple { border: none; color: var(--white); font-family: inherit; cursor: pointer; }
+.contato-aviso { font-family: "DM Sans", sans-serif; font-size: 15px; color: var(--muted); }
+.contato-aviso.erro { color: var(--orange); }
+
+.contato-whats {
+  position: relative;
+  overflow: hidden;
+  min-height: 520px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 14px;
+  border-radius: 24px;
+  border: 1px solid rgba(144, 144, 224, 0.22);
+  background:
+    linear-gradient(to top, rgba(8, 8, 15, 0.95) 15%, rgba(40, 40, 110, 0.45) 60%, rgba(144, 144, 224, 0.15)),
+    url(assets/hero-bg.png) 70% center / cover no-repeat;
+}
+.contato-whats h3 {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+
 /* ---------- FAQ ---------- */
 
 .faq-grid {
@@ -827,6 +948,8 @@ main { overflow-x: clip; }
 @media (max-width: 1100px) {
   .carousel-arrow.next { left: auto; right: 16px; }
   .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contato-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  .contato-whats { min-height: 340px; }
   .faq-card { position: static; }
   .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 48px 40px; }
   .footer-marca { grid-column: 1 / -1; }
@@ -858,6 +981,9 @@ main { overflow-x: clip; }
   .tools { gap: 32px 24px; }
   .tools img { max-width: 100%; max-height: 56px; }
   .faq-card { min-height: 0; padding: 32px 24px; }
+  .contato-form { grid-template-columns: minmax(0, 1fr); gap: 26px; margin-top: 36px; }
+  .contato-whats { padding: 28px 24px; }
+  .contato-whats h3 { font-size: 26px; line-height: 30px; }
   .faq-title { font-size: 44px; line-height: 48px; letter-spacing: -2px; }
   .depoimentos-grid {
     display: flex;

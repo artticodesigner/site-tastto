@@ -35,6 +35,57 @@ videoModal.querySelector('.video-modal-close').addEventListener('click', closeVi
 videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideo(); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !videoModal.hidden) closeVideo(); });
 
+// Formulário de contato: valida e monta a mensagem
+// TODO: definir pra onde o formulário envia (número de WhatsApp da Tastto, só dígitos com DDI: 5584...)
+const WHATSAPP_TASTTO = '';
+
+const contatoForm = document.querySelector('.contato-form');
+const contatoAviso = contatoForm.querySelector('.contato-aviso');
+
+function avisar(texto, erro) {
+  contatoAviso.textContent = texto;
+  contatoAviso.classList.toggle('erro', erro);
+}
+
+contatoForm.addEventListener('input', (e) => e.target.classList.remove('invalido'));
+contatoForm.addEventListener('change', (e) => {
+  if (e.target.name === 'operacao') contatoForm.querySelector('.opcoes').classList.remove('invalido');
+});
+
+contatoForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  let ok = true;
+  contatoForm.querySelectorAll('input:not([type=radio]), select').forEach((campo) => {
+    const valido = campo.checkValidity();
+    campo.classList.toggle('invalido', !valido);
+    if (!valido) ok = false;
+  });
+  const operacao = contatoForm.querySelector('input[name=operacao]:checked');
+  contatoForm.querySelector('.opcoes').classList.toggle('invalido', !operacao);
+  if (!operacao) ok = false;
+
+  if (!ok) return avisar('Preencha os campos marcados com *.', true);
+
+  const d = Object.fromEntries(new FormData(contatoForm));
+  const insta = '@' + d.instagram.trim().replace(/^@+/, '').replace(/^https?:\/\/(www\.)?instagram\.com\//, '').replace(/\/$/, '');
+  const texto = [
+    'Olá, Tastto! Vim pelo site.',
+    `Nome: ${d.nome}`,
+    `Restaurante: ${d.empresa}`,
+    `Instagram: ${insta}`,
+    `WhatsApp: ${d.whatsapp}`,
+    `E-mail: ${d.email}`,
+    `Operação: ${d.operacao}`,
+    `Faturamento mensal: ${d.faturamento}`,
+    d.mensagem.trim() && `Mensagem: ${d.mensagem.trim()}`,
+  ].filter(Boolean).join('\n');
+
+  if (!WHATSAPP_TASTTO) return avisar('Envio ainda não configurado.', true);
+  window.open(`https://wa.me/${WHATSAPP_TASTTO}?text=${encodeURIComponent(texto)}`, '_blank', 'noopener');
+  avisar('Tudo certo! Finalize o envio no WhatsApp.', false);
+  contatoForm.reset();
+});
+
 // FAQ: abre/fecha com animação, uma pergunta aberta por vez
 const faqItems = document.querySelectorAll('.faq-item');
 const faqDuration = 300;
