@@ -31,6 +31,35 @@ equipeSetas.forEach((seta) =>
     equipeTrilho.scrollBy({ left: passo * Number(seta.dataset.dir) });
   })
 );
+// Arrastar com o mouse (no toque o navegador já rola sozinho)
+let equipeArrasto = null;
+
+equipeTrilho.addEventListener('pointerdown', (e) => {
+  if (e.pointerType !== 'mouse' || e.button !== 0) return;
+  equipeArrasto = { x: e.clientX, scroll: equipeTrilho.scrollLeft, moveu: false };
+  equipeTrilho.classList.add('arrastando');
+  equipeTrilho.setPointerCapture(e.pointerId);
+});
+
+equipeTrilho.addEventListener('pointermove', (e) => {
+  if (!equipeArrasto) return;
+  const dx = e.clientX - equipeArrasto.x;
+  if (Math.abs(dx) > 3) equipeArrasto.moveu = true;
+  equipeTrilho.scrollLeft = equipeArrasto.scroll - dx;
+});
+
+function soltarEquipe() {
+  if (!equipeArrasto) return;
+  equipeArrasto = null;
+  // devolve o encaixe: o trilho assenta no card mais próximo
+  const pos = equipeTrilho.scrollLeft;
+  equipeTrilho.classList.remove('arrastando');
+  equipeTrilho.scrollLeft = pos;
+}
+equipeTrilho.addEventListener('pointerup', soltarEquipe);
+equipeTrilho.addEventListener('pointercancel', soltarEquipe);
+equipeTrilho.addEventListener('dragstart', (e) => e.preventDefault());
+
 equipeTrilho.addEventListener('scroll', atualizarSetasEquipe, { passive: true });
 window.addEventListener('resize', atualizarSetasEquipe);
 atualizarSetasEquipe();

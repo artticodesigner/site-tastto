@@ -520,6 +520,10 @@ main { overflow-x: clip; }
   scrollbar-width: none;
 }
 .equipe-trilho::-webkit-scrollbar { display: none; }
+.equipe-trilho { cursor: grab; user-select: none; }
+.equipe-trilho.arrastando { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+.equipe-trilho.arrastando .equipe-card { transform: none; }
+.equipe-card img { -webkit-user-drag: none; pointer-events: none; }
 
 .equipe-card {
   flex: 0 0 300px;
