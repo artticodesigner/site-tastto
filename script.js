@@ -144,7 +144,6 @@ contatoForm.addEventListener('submit', (e) => {
     `E-mail: ${d.email}`,
     `Operação: ${d.operacao}`,
     `Faturamento mensal: ${d.faturamento}`,
-    d.mensagem.trim() && `Mensagem: ${d.mensagem.trim()}`,
   ].filter(Boolean).join('\n');
 
   if (!WHATSAPP_TASTTO) return avisar('Envio ainda não configurado.', true);

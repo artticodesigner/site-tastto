@@ -79,7 +79,8 @@ em { font-style: normal; }
   letter-spacing: -0.24px;
   transition: opacity 0.2s;
 }
-.btn-saiba:hover { opacity: 0.9; }
+.btn-saiba { transition: background 0.25s, color 0.25s; }
+.btn-saiba:hover { background: var(--purple); color: var(--white); }
 
 .btn-menu {
   width: 46px;
@@ -195,7 +196,10 @@ em { font-style: normal; }
   letter-spacing: -0.32px;
   transition: background 0.2s;
 }
-.btn-outline:hover { background: rgba(255, 255, 255, 0.06); }
+.btn-outline { transition: background 0.25s, color 0.25s, border-color 0.25s; }
+.btn-outline:hover { background: var(--white); border-color: var(--white); color: var(--bg); }
+.btn-outline .dot { transition: background 0.25s; }
+.btn-outline:hover .dot { background: var(--bg); }
 .btn-outline .dot {
   width: 6px;
   height: 6px;
@@ -225,6 +229,8 @@ em { font-style: normal; }
   color: var(--white);
   transition: transform 0.3s;
 }
+.btn-purple { transition: background 0.25s; }
+.btn-purple:hover { background: var(--orange); }
 .btn-purple:hover .btn-purple-icon { transform: rotate(-45deg); }
 
 .logos-marquee {
@@ -1078,7 +1084,8 @@ main { overflow-x: clip; }
   letter-spacing: -0.32px;
   transition: background 0.2s;
 }
-.btn-whats:hover { background: rgba(144, 144, 224, 0.1); }
+.btn-whats { transition: background 0.25s, color 0.25s, border-color 0.25s; }
+.btn-whats:hover { background: var(--purple); border-color: var(--purple); color: var(--bg); }
 
 .footer-top {
   margin-top: 80px;
@@ -1125,7 +1132,8 @@ main { overflow-x: clip; }
   color: var(--purple);
   transition: border-color 0.2s;
 }
-.footer-social a:hover { border-color: var(--purple); color: var(--purple); }
+.footer-social a { transition: background 0.25s, color 0.25s, border-color 0.25s; }
+.footer-social a:hover { background: var(--purple); border-color: var(--purple); color: var(--bg); }
 
 .footer-copy {
   margin-top: 70px;
@@ -1223,3 +1231,11 @@ main { overflow-x: clip; }
   .footer-cta-botoes a { justify-content: center; }
   .footer-top { grid-template-columns: 1fr; gap: 40px; margin-top: 56px; }
 }
+
+/* Hover com troca de cor nos demais botões */
+.carousel-arrow { transition: background 0.25s, opacity 0.25s; }
+.carousel-arrow:hover { background: var(--orange); }
+.btn-menu { transition: background 0.25s; }
+.btn-menu:hover { background: var(--purple); }
+.video-modal-close { transition: background 0.25s; }
+.video-modal-close:hover { background: var(--orange); color: var(--white); }
