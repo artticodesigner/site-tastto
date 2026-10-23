@@ -14,6 +14,23 @@ menu.querySelectorAll('a').forEach((a) =>
   })
 );
 
+// Método Five: abre o painel ao passar o mouse (desktop) ou ao clicar/tocar
+const fivePaineis = document.querySelectorAll('.five-painel');
+
+function abrirFive(painel) {
+  fivePaineis.forEach((p) => {
+    p.classList.toggle('ativo', p === painel);
+    p.setAttribute('aria-expanded', p === painel);
+  });
+}
+
+fivePaineis.forEach((p) => {
+  p.addEventListener('click', () => abrirFive(p));
+  p.addEventListener('mouseenter', () => {
+    if (matchMedia('(hover: hover) and (min-width: 1101px)').matches) abrirFive(p);
+  });
+});
+
 // Equipe: setas rolam o trilho um card por vez
 const equipeTrilho = document.querySelector('.equipe-trilho');
 const equipeSetas = document.querySelectorAll('.equipe-seta');

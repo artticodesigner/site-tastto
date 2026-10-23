@@ -483,110 +483,127 @@ main { overflow-x: clip; }
 
 /* ---------- Método Five ---------- */
 
-.five { text-align: center; }
-
-.five-title {
-  font-family: "Unbounded", sans-serif;
-  font-weight: 800;
-  font-size: 72px;
-  line-height: 0.95;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  background: linear-gradient(180deg, #ece9ff, #b8b0f5);
-  -webkit-background-clip: text;
-          background-clip: text;
-  color: transparent;
-}
-
-.five-sub {
-  max-width: 520px;
-  margin: 28px auto 0;
-  font-family: "DM Sans", sans-serif;
-  font-size: 17px;
-  line-height: 26px;
-  color: var(--muted);
-}
-
-.five-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr 1fr;
-  grid-template-areas:
-    "a b d"
-    "c b e";
-  gap: 18px;
-  margin-top: 56px;
-  text-align: left;
-}
-.five-a { grid-area: a; }
-.five-b { grid-area: b; }
-.five-c { grid-area: c; }
-.five-d { grid-area: d; }
-.five-e { grid-area: e; }
-
-.five-card {
-  padding: 30px 28px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: #121218;
-  transition: border-color 0.3s, transform 0.3s;
-}
-.five-card:hover { border-color: rgba(144, 144, 224, 0.4); transform: translateY(-4px); }
-
-.five-card h3 {
+.five-topo {
   display: flex;
-  align-items: baseline;
-  gap: 10px;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
 }
-.five-num {
-  font-family: "Unbounded", sans-serif;
-  font-weight: 800;
-  font-size: 24px;
-  letter-spacing: 1px;
-  color: #c9c2ff;
-}
-.five-card p {
-  margin-top: 16px;
-  font-family: "DM Sans", sans-serif;
-  font-size: 14px;
-  line-height: 22px;
-  color: var(--muted);
+.five-topo .btn-purple { flex-shrink: 0; }
+
+/* Painéis que se expandem: o ativo abre, os outros viram faixas */
+.five-paineis {
+  display: flex;
+  gap: 12px;
+  height: 440px;
+  margin-top: 48px;
 }
 
-.five-destaque {
+.five-painel {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 40px 30px 30px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  background: #121218;
+  color: var(--white);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: flex 0.6s cubic-bezier(0.3, 0.7, 0.2, 1), border-color 0.4s, background 0.4s;
+}
+.five-painel:hover { border-color: rgba(144, 144, 224, 0.35); }
+.five-painel.ativo {
+  flex: 3.4;
+  cursor: default;
   border-color: rgba(144, 144, 224, 0.45);
   background:
-    radial-gradient(circle at 50% 0%, rgba(144, 144, 224, 0.14), transparent 60%),
-    #0e0d1f;
-  box-shadow: 0 0 60px -10px rgba(144, 144, 224, 0.35);
+    radial-gradient(circle at 100% 0%, rgba(144, 144, 224, 0.28), transparent 55%),
+    radial-gradient(circle at 0% 100%, rgba(250, 106, 43, 0.1), transparent 45%),
+    #121222;
 }
-.five-destaque h3 { font-size: 18px; }
-.five-destaque .five-num { font-size: 30px; }
-.five-destaque p { font-size: 18px; line-height: 29px; color: #c8c8d4; }
-.five-destaque:hover { transform: none; }
 
-.five-btn {
-  margin-top: auto;
-  padding: 16px 24px;
-  border-radius: 50px;
-  background: linear-gradient(90deg, #ffffff, #b4a8ff);
-  color: #0e0d1f;
-  text-align: center;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  transition: transform 0.25s, box-shadow 0.25s;
+.five-num {
+  display: block;
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -2px;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(144, 144, 224, 0.6);
+  transition: color 0.4s, -webkit-text-stroke-color 0.4s;
 }
-.five-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -8px rgba(180, 168, 255, 0.6); }
+.five-painel.ativo .five-num { color: var(--purple); -webkit-text-stroke-color: var(--purple); }
+
+/* Nome na vertical quando o painel está fechado */
+.five-vertical {
+  position: absolute;
+  left: 28px;
+  bottom: 28px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: -0.4px;
+  white-space: nowrap;
+  color: #cfcfdc;
+  transition: opacity 0.3s;
+}
+.five-painel.ativo .five-vertical { opacity: 0; }
+
+.five-conteudo {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 460px;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.five-painel.ativo .five-conteudo {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.25s;
+}
+
+.five-icone {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--purple);
+  background: rgba(144, 144, 224, 0.12);
+  border: 1px solid rgba(144, 144, 224, 0.3);
+}
+.five-nome {
+  margin-top: 18px;
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 34px;
+  letter-spacing: -0.9px;
+}
+.five-texto {
+  margin-top: 12px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #c8c8d4;
+}
 
 /* ---------- Equipe ---------- */
 
@@ -1112,11 +1129,31 @@ main { overflow-x: clip; }
   .carousel-arrow.next { left: auto; right: 16px; }
   .faq-grid { grid-template-columns: 1fr; gap: 40px; }
   .contato-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
-  .five-grid {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "a" "b" "c" "d" "e";
+  .five-topo { flex-direction: column; align-items: flex-start; }
+  .five-paineis { flex-direction: column; height: auto; }
+  .five-painel { flex: none; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 22px 24px; }
+  .five-conteudo { width: 100%; }
+  .five-painel.ativo { flex: none; }
+  .five-num { display: inline; font-size: 36px; }
+  .five-vertical {
+    position: static;
+    writing-mode: horizontal-tb;
+    transform: none;
+    margin-left: 14px;
+    font-size: 20px;
   }
-  .five-destaque .five-btn { margin-top: 28px; }
+  .five-painel.ativo .five-vertical { opacity: 1; color: var(--white); }
+  .five-conteudo {
+    position: static;
+    max-width: none;
+    max-height: 0;
+    overflow: hidden;
+    transform: none;
+    transition: max-height 0.5s ease, opacity 0.3s, margin 0.3s;
+  }
+  .five-painel.ativo .five-conteudo { max-height: 400px; margin-top: 16px; transition-delay: 0s; }
+  .five-icone, .five-nome { display: none; }
+  .five-texto { margin-top: 0; }
   .contato-whats { min-height: 340px; }
   .faq-card { position: static; }
   .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 48px 40px; }
@@ -1150,10 +1187,8 @@ main { overflow-x: clip; }
   .tools img { max-width: 100%; max-height: 56px; }
   .faq-card { min-height: 0; padding: 32px 24px; }
   .contato-form { grid-template-columns: minmax(0, 1fr); gap: 26px; margin-top: 36px; }
-  .five-title { font-size: 44px; }
-  .five-sub { font-size: 16px; line-height: 24px; }
-  .five-grid { margin-top: 40px; }
-  .five-destaque p { font-size: 16px; line-height: 25px; }
+  .five-paineis { margin-top: 32px; gap: 10px; }
+  .five-topo .btn-purple { font-size: 14px; }
   .equipe-setas { display: none; }
   .equipe-trilho { margin-top: 32px; gap: 14px; }
   .equipe-card { flex-basis: 72vw; }
