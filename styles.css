@@ -481,6 +481,113 @@ main { overflow-x: clip; }
 }
 .tools img { max-height: 76px; width: auto; max-width: 184px; object-fit: contain; }
 
+/* ---------- Método Five ---------- */
+
+.five { text-align: center; }
+
+.five-title {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 800;
+  font-size: 72px;
+  line-height: 0.95;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #ece9ff, #b8b0f5);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+.five-sub {
+  max-width: 520px;
+  margin: 28px auto 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 17px;
+  line-height: 26px;
+  color: var(--muted);
+}
+
+.five-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  grid-template-areas:
+    "a b d"
+    "c b e";
+  gap: 18px;
+  margin-top: 56px;
+  text-align: left;
+}
+.five-a { grid-area: a; }
+.five-b { grid-area: b; }
+.five-c { grid-area: c; }
+.five-d { grid-area: d; }
+.five-e { grid-area: e; }
+
+.five-card {
+  padding: 30px 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #121218;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.five-card:hover { border-color: rgba(144, 144, 224, 0.4); transform: translateY(-4px); }
+
+.five-card h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+.five-num {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: #c9c2ff;
+}
+.five-card p {
+  margin-top: 16px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--muted);
+}
+
+.five-destaque {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 30px 30px;
+  border-color: rgba(144, 144, 224, 0.45);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(144, 144, 224, 0.14), transparent 60%),
+    #0e0d1f;
+  box-shadow: 0 0 60px -10px rgba(144, 144, 224, 0.35);
+}
+.five-destaque h3 { font-size: 18px; }
+.five-destaque .five-num { font-size: 30px; }
+.five-destaque p { font-size: 18px; line-height: 29px; color: #c8c8d4; }
+.five-destaque:hover { transform: none; }
+
+.five-btn {
+  margin-top: auto;
+  padding: 16px 24px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #ffffff, #b4a8ff);
+  color: #0e0d1f;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.five-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -8px rgba(180, 168, 255, 0.6); }
+
 /* ---------- Equipe ---------- */
 
 .equipe-topo {
@@ -1005,6 +1112,11 @@ main { overflow-x: clip; }
   .carousel-arrow.next { left: auto; right: 16px; }
   .faq-grid { grid-template-columns: 1fr; gap: 40px; }
   .contato-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  .five-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "a" "b" "c" "d" "e";
+  }
+  .five-destaque .five-btn { margin-top: 28px; }
   .contato-whats { min-height: 340px; }
   .faq-card { position: static; }
   .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 48px 40px; }
@@ -1038,6 +1150,10 @@ main { overflow-x: clip; }
   .tools img { max-width: 100%; max-height: 56px; }
   .faq-card { min-height: 0; padding: 32px 24px; }
   .contato-form { grid-template-columns: minmax(0, 1fr); gap: 26px; margin-top: 36px; }
+  .five-title { font-size: 44px; }
+  .five-sub { font-size: 16px; line-height: 24px; }
+  .five-grid { margin-top: 40px; }
+  .five-destaque p { font-size: 16px; line-height: 25px; }
   .equipe-setas { display: none; }
   .equipe-trilho { margin-top: 32px; gap: 14px; }
   .equipe-card { flex-basis: 72vw; }
