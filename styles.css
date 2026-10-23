@@ -253,6 +253,16 @@ em { font-style: normal; }
   to { transform: translateX(-50%); }
 }
 
+/* Telas baixas (notebook): compacta o hero pra faixa de logos aparecer sem rolar */
+@media (max-height: 820px) and (min-width: 761px) {
+  .hero-content { padding-top: 150px; }
+  .hero-title { font-size: 50px; line-height: 58px; }
+  .hero-sub { margin-top: 28px; }
+  .hero-ctas { margin-top: 24px; }
+  .logos-marquee { margin-top: 20px; }
+  .logos-track img { width: 120px; height: 120px; }
+}
+
 /* ---------- Seções ---------- */
 
 main { overflow-x: clip; }
@@ -271,6 +281,9 @@ main { overflow-x: clip; }
   transform: translateX(-50%);
   background: linear-gradient(90deg, transparent, rgba(144, 144, 224, 0.6), transparent);
 }
+/* Sem divisor em cima e embaixo de Quem somos */
+.quem-somos::before,
+.quem-somos + .section::before { display: none; }
 
 .eyebrow {
   display: flex;
