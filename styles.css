@@ -759,19 +759,8 @@ main { overflow-x: clip; }
 .contato .section-sub { max-width: 560px; }
 
 .contato-grid { position: relative; }
-.contato-grid > div { position: relative; z-index: 1; max-width: 640px; }
+.contato-grid > div { position: relative; z-index: 1; }
 
-/* Símbolo da logo como marca d'água à direita */
-.contato-simbolo {
-  position: absolute;
-  top: 50%;
-  right: -130px;
-  height: 600px;
-  width: auto;
-  transform: translateY(-50%) rotate(-6deg);
-  pointer-events: none;
-  filter: drop-shadow(0 0 80px rgba(144, 144, 224, 0.25));
-}
 
 .contato-form {
   display: grid;
@@ -1125,7 +1114,6 @@ main { overflow-x: clip; }
 @media (max-width: 1100px) {
   .carousel-arrow.next { left: auto; right: 16px; }
   .faq-grid { grid-template-columns: 1fr; gap: 40px; }
-  .contato-simbolo { height: 460px; right: -80px; opacity: 0.7; }
   .five-topo { flex-direction: column; align-items: flex-start; }
   .five-paineis { flex-direction: column; height: auto; }
   .five-painel { flex: none; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 22px 24px; }
@@ -1188,7 +1176,6 @@ main { overflow-x: clip; }
   .equipe-setas { display: none; }
   .equipe-trilho { margin-top: 32px; gap: 14px; }
   .equipe-card { flex-basis: 72vw; }
-  .contato-simbolo { top: 0; height: 300px; right: -90px; transform: rotate(-6deg); opacity: 0.45; }
   .faq-title { font-size: 44px; line-height: 48px; letter-spacing: -2px; }
   .depoimentos-grid {
     display: flex;
