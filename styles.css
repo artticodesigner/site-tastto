@@ -111,7 +111,7 @@ em { font-style: normal; }
 .nav-menu a:hover { color: var(--white); background: rgba(255, 255, 255, 0.06); }
 
 /* Telas estreitas: não cabem os links, volta pro botão ☰ */
-@media (max-width: 1000px) {
+@media (max-width: 1120px) {
   .btn-menu { display: grid; }
   .nav-menu {
     position: absolute;
