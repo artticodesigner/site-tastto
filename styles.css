@@ -624,6 +624,69 @@ main { overflow-x: clip; }
   color: #c8c8d4;
 }
 
+/* ---------- Para quem é (nichos) ---------- */
+
+.nichos-faixas {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 48px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+.nichos-faixa {
+  display: flex;
+  width: max-content;
+  list-style: none;
+  animation: marquee 45s linear infinite;
+}
+.nichos-faixa.reversa { animation-direction: reverse; animation-duration: 50s; }
+.nichos-faixas:hover .nichos-faixa { animation-play-state: paused; }
+
+.nichos-faixa li {
+  margin-right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.02);
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+  color: #dedee8;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+.nichos-faixa li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--purple);
+  transition: background 0.25s;
+}
+.nichos-faixa li:hover { background: var(--purple); border-color: var(--purple); color: var(--bg); }
+.nichos-faixa li:hover::before { background: var(--bg); }
+
+.nichos-fim {
+  margin-top: 36px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  color: var(--muted);
+}
+.nichos-fim a { color: var(--purple); font-weight: 500; transition: color 0.25s; }
+.nichos-fim a:hover { color: var(--orange); }
+
+@media (prefers-reduced-motion: reduce) {
+  .nichos-faixa { animation: none; flex-wrap: wrap; width: auto; padding: 0 16px; }
+  .nichos-faixa li[aria-hidden] { display: none; }
+}
+
 /* ---------- Equipe ---------- */
 
 .equipe-topo {
