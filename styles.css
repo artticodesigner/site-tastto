@@ -287,9 +287,10 @@ main { overflow-x: clip; }
   transform: translateX(-50%);
   background: linear-gradient(90deg, transparent, rgba(144, 144, 224, 0.6), transparent);
 }
-/* Sem divisor em cima e embaixo de Quem somos */
+/* Sem divisor em cima e embaixo de Quem somos, nem em cima da faixa de nichos */
 .quem-somos::before,
-.quem-somos + .section::before { display: none; }
+.quem-somos + .section::before,
+.nichos::before { display: none; }
 
 .eyebrow {
   display: flex;
