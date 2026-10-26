@@ -626,11 +626,12 @@ main { overflow-x: clip; }
 
 /* ---------- Para quem é (nichos) ---------- */
 
+.nichos { padding: 72px 0; }
+
 .nichos-faixas {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin-top: 48px;
   overflow: hidden;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
           mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
