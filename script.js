@@ -14,6 +14,33 @@ menu.querySelectorAll('a').forEach((a) =>
   })
 );
 
+// Números de autoridade: contam de 0 até o valor quando aparecem na tela
+const contadores = document.querySelectorAll('.numero-conta');
+
+function contar(el) {
+  const alvo = Number(el.dataset.alvo);
+  const inicio = performance.now();
+  const duracao = 1600;
+  const passo = (agora) => {
+    const t = Math.min((agora - inicio) / duracao, 1);
+    el.textContent = Math.round(alvo * (1 - Math.pow(1 - t, 3)));
+    if (t < 1) requestAnimationFrame(passo);
+  };
+  requestAnimationFrame(passo);
+}
+
+if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  contadores.forEach((el) => (el.textContent = '0'));
+  const obs = new IntersectionObserver((entradas) => {
+    entradas.forEach((e) => {
+      if (!e.isIntersecting) return;
+      contar(e.target);
+      obs.unobserve(e.target);
+    });
+  }, { threshold: 0.6 });
+  contadores.forEach((el) => obs.observe(el));
+}
+
 // Método Five: abre o painel ao passar o mouse (desktop) ou ao clicar/tocar
 const fivePaineis = document.querySelectorAll('.five-painel');
 

@@ -269,6 +269,42 @@ em { font-style: normal; }
   .logos-track img { width: 120px; height: 120px; }
 }
 
+/* ---------- Números de autoridade ---------- */
+
+.numeros { position: relative; padding: 24px 0 0; }
+
+.numeros-faixa {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid rgba(144, 144, 224, 0.2);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(144, 144, 224, 0.12), transparent 70%),
+    #101018;
+}
+
+.numero { padding: 36px 32px; }
+.numero + .numero { border-left: 1px solid rgba(255, 255, 255, 0.08); }
+
+.numero-valor {
+  font-family: "Host Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 52px;
+  line-height: 1;
+  letter-spacing: -2px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.numero-extra { color: var(--purple); }
+
+.numero-legenda {
+  margin-top: 12px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  line-height: 21px;
+  color: var(--muted);
+}
+
 /* ---------- Seções ---------- */
 
 main { overflow-x: clip; }
@@ -1215,6 +1251,8 @@ main { overflow-x: clip; }
   .carousel-arrow.next { left: auto; right: 16px; }
   .faq-grid { grid-template-columns: 1fr; gap: 40px; }
   .five-topo { flex-direction: column; align-items: flex-start; }
+  .numero { padding: 30px 24px; }
+  .numero-valor { font-size: 40px; }
   .five-paineis { flex-direction: column; height: auto; }
   .five-painel { flex: none; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 22px 24px; }
   .five-conteudo { width: 100%; }
@@ -1272,6 +1310,13 @@ main { overflow-x: clip; }
   .faq-card { min-height: 0; padding: 32px 24px; }
   .contato-form { grid-template-columns: minmax(0, 1fr); gap: 26px; margin-top: 36px; }
   .five-paineis { margin-top: 32px; gap: 10px; }
+  .numeros-faixa { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .numero { padding: 24px 20px; }
+  .numero + .numero { border-left: none; }
+  .numero:nth-child(even) { border-left: 1px solid rgba(255, 255, 255, 0.08); }
+  .numero:nth-child(n + 3) { border-top: 1px solid rgba(255, 255, 255, 0.08); }
+  .numero-valor { font-size: 34px; letter-spacing: -1px; }
+  .numero-legenda { font-size: 13px; line-height: 18px; }
   .five-topo .btn-purple { font-size: 14px; }
   .equipe-setas { display: none; }
   .equipe-trilho { margin-top: 32px; gap: 14px; }
