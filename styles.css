@@ -311,6 +311,7 @@ main { overflow-x: clip; }
 
 .section { position: relative; padding: 120px 0; }
 .servicos { padding-top: 72px; }
+.depoimentos { padding: 72px 0 24px; }
 
 /* Divisor entre seções: linha fina que some nas pontas */
 .section ~ .section::before {
