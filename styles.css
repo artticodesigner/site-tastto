@@ -821,14 +821,11 @@ main { overflow-x: clip; }
 .depoimento {
   position: relative;
   aspect-ratio: 4 / 5;
-  padding: 0;
-  border: none;
   overflow: hidden;
   background: var(--bg);
-  color: var(--white);
-  cursor: pointer;
 }
-.depoimento img {
+.depoimento video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -840,54 +837,19 @@ main { overflow-x: clip; }
   inset: 0;
   display: grid;
   place-items: center;
+  padding: 0;
+  border: none;
   background: rgba(8, 8, 15, 0.45);
+  color: var(--white);
+  cursor: pointer;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 .depoimento-play svg { width: 46px; height: 46px; }
-.depoimento:hover img { transform: scale(1.04); }
+.depoimento:not(.tocando):hover video { transform: scale(1.04); }
 .depoimento:hover .depoimento-play,
-.depoimento:focus-visible .depoimento-play { opacity: 1; }
-
-.video-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  background: rgba(8, 8, 15, 0.85);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-.video-modal[hidden] { display: none; }
-.video-modal-box {
-  position: relative;
-  width: min(420px, 100%);
-  height: min(760px, calc(100vh - 48px));
-}
-.video-modal-box iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  border-radius: 16px;
-  background: var(--white);
-}
-.video-modal-close {
-  position: absolute;
-  top: -14px;
-  right: -14px;
-  z-index: 1;
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border: none;
-  border-radius: 50%;
-  background: var(--purple);
-  color: var(--bg);
-  cursor: pointer;
-}
+.depoimento-play:focus-visible { opacity: 1; }
+.depoimento.tocando .depoimento-play { display: none; }
 
 /* ---------- Contato (formulário) ---------- */
 
@@ -1332,7 +1294,6 @@ main { overflow-x: clip; }
   }
   .depoimento { flex: 0 0 82vw; scroll-snap-align: center; }
   .depoimento-play { opacity: 1; background: rgba(8, 8, 15, 0.25); }
-  .video-modal-close { top: 8px; right: 8px; }
   .faq-item summary { font-size: 18px; padding: 20px; gap: 16px; }
   .faq-item p { font-size: 16px; padding: 0 20px 22px; }
   .footer { padding-top: 60px; }
@@ -1348,5 +1309,3 @@ main { overflow-x: clip; }
 .carousel-arrow:hover { background: var(--orange); }
 .btn-menu { transition: background 0.25s; }
 .btn-menu:hover { background: var(--purple); }
-.video-modal-close { transition: background 0.25s; }
-.video-modal-close:hover { background: var(--orange); color: var(--white); }

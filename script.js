@@ -108,26 +108,25 @@ equipeTrilho.addEventListener('scroll', atualizarSetasEquipe, { passive: true })
 window.addEventListener('resize', atualizarSetasEquipe);
 atualizarSetasEquipe();
 
-// Depoimentos: abre o vídeo do Instagram num pop-up
-const videoModal = document.querySelector('.video-modal');
-const videoFrame = videoModal.querySelector('iframe');
+// Depoimentos: o vídeo toca no próprio card, um de cada vez
+const depoimentos = document.querySelectorAll('.depoimento');
 
-function closeVideo() {
-  videoModal.hidden = true;
-  videoFrame.src = '';
-  document.body.style.overflow = '';
-}
-
-document.querySelectorAll('.depoimento').forEach((btn) =>
-  btn.addEventListener('click', () => {
-    videoFrame.src = `https://www.instagram.com/p/${btn.dataset.post}/embed/`;
-    videoModal.hidden = false;
-    document.body.style.overflow = 'hidden';
-  })
-);
-videoModal.querySelector('.video-modal-close').addEventListener('click', closeVideo);
-videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideo(); });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !videoModal.hidden) closeVideo(); });
+depoimentos.forEach((card) => {
+  const video = card.querySelector('video');
+  card.querySelector('.depoimento-play').addEventListener('click', () => {
+    card.classList.add('tocando');
+    video.controls = true;
+    video.play();
+  });
+  video.addEventListener('play', () =>
+    depoimentos.forEach((outro) => outro !== card && outro.querySelector('video').pause())
+  );
+  video.addEventListener('ended', () => {
+    card.classList.remove('tocando');
+    video.controls = false;
+    video.load(); // volta pra capa
+  });
+});
 
 // Formulário de contato: valida e monta a mensagem
 // TODO: definir pra onde o formulário envia (número de WhatsApp da Tastto, só dígitos com DDI: 5584...)
