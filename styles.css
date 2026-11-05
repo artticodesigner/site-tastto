@@ -1252,6 +1252,7 @@ main { overflow-x: clip; }
 }
 
 @media (max-width: 760px) {
+  .contato .section-title br { display: none; }
   .nav { padding: 0 20px; height: 70px; }
   .nav-menu { right: 20px; }
   .btn-saiba { display: none; }
