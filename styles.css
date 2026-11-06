@@ -1206,7 +1206,13 @@ main { overflow-x: clip; }
   font-family: "DM Sans", sans-serif;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
 }
+.footer-copy a { color: var(--white); font-weight: 500; transition: color 0.25s; }
+.footer-copy a:hover { color: var(--purple); }
 
 /* ---------- Responsivo ---------- */
 
