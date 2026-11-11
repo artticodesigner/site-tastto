@@ -1258,7 +1258,27 @@ main { overflow-x: clip; }
 }
 
 @media (max-width: 760px) {
-  .contato .section-title br { display: none; }
+  /* Celular: títulos, descrições e botões centralizados; títulos longos com linhas equilibradas */
+  .eyebrow { justify-content: center; }
+  .footer-col .eyebrow { justify-content: flex-start; }
+  .section-title,
+  .faq-title,
+  .footer-cta h2 { text-align: center; text-wrap: balance; }
+  .section-title br { display: none; }
+  .hero-title { display: block; text-align: center; text-wrap: balance; }
+  .hero-title > span { display: inline; }
+  .faq-title { align-items: center; text-align: center; }
+  .hero-sub,
+  .section-sub,
+  .quem-somos-text p,
+  .faq-sub { text-align: center; margin-left: auto; margin-right: auto; }
+  .hero-ctas { justify-content: center; }
+  .five-topo,
+  .footer-cta { align-items: center; }
+  .equipe-topo { justify-content: center; }
+  .contato-enviar { justify-content: center; text-align: center; }
+  .faq-card { align-items: center; text-align: center; }
+  .faq-btn { align-self: center; }
   .nav { padding: 0 20px; height: 70px; }
   .nav-menu { right: 20px; }
   .btn-saiba { display: none; }
