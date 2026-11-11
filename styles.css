@@ -1283,6 +1283,7 @@ main { overflow-x: clip; }
   .nav-menu { right: 20px; }
   .btn-saiba { display: none; }
   .hero { min-height: 0; }
+  .hero-bg { background-position: center, center, 86% center; } /* mostra a mesa do restaurante */
   .hero-content { padding: 140px 16px 16px; }
   .hero-title { font-size: 40px; line-height: 46px; }
   .hero-sub { font-size: 17px; line-height: 25px; margin-top: 28px; }
